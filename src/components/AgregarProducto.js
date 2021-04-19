@@ -7,17 +7,57 @@ const AgregarProducto = () => {
     const [precioProducto, setPrecioProducto] = useState(0);
     const [categoria, setCategoria] = useState('');
     const [error, setError] = useState(false);
+    // Traer variable de entorno
+    const URL = process.env.REACT_APP_API_URL;
+    console.log("🚀 ~ file: AgregarProducto.js ~ line 12 ~ AgregarProducto ~ URL", URL)
 
     const leerCategoria = (e)=> {
         setCategoria(e.target.value);
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault();
         // Validaciones
         if(nombreProducto.trim() !== "" && precioProducto.trim() !== "" && categoria !== ""){
             // Si está todo ok, envío los datos del producto a la API
             setError(false);
+
+            // Crear objeto
+            // const producto = {
+            //     nombreProducto: nombreProducto,
+            //     precioProducto: precioProducto,
+            //     categoria: categoria
+            // }
+            const producto = {
+                nombreProducto,
+                precioProducto,
+                categoria
+            }
+            // Envío request POST
+            try{
+                // Estructura de datos a enviar
+                const cabecera = {
+                    method: "POST",
+                    headers:{
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(producto)
+                };
+
+                const response = await fetch(URL, cabecera);
+                console.log(response);
+                if(response.status === 201){
+                    alert("datos enviados");
+                    // Mostrar ventana de Sweet Alert
+                }
+
+            } catch (error){
+                console.log(error);
+                // Mostrar cartel de error al usuario
+            }
+            
+            // Espero respuesta
+
         } else {
             // Si no está todo ok, valido el error
             setError(true);
