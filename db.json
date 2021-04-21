@@ -53,6 +53,18 @@
       "precioProducto": "50",
       "categoria": "bebida-caliente",
       "id": 9
+    },
+    {
+      "nombreProducto": "alfajor de maisena",
+      "precioProducto": "70",
+      "categoria": "dulce",
+      "id": 10
+    },
+    {
+      "nombreProducto": "medialuna con dulce de leche x unidad",
+      "precioProducto": "60",
+      "categoria": "dulce",
+      "id": 11
     }
   ]
 }

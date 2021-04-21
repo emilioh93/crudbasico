@@ -7,7 +7,9 @@ const ListarProductos = (props) => {
         <Container>
         <h1 className="text-center my-5">Productos</h1>
         <ListGroup className="my-5">
-            <ItemProducto></ItemProducto>
+            {
+                props.productos.map((producto)=><ItemProducto producto={producto} key={producto.id}></ItemProducto>)
+            }
         </ListGroup>
         </Container>
     );
