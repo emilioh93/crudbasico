@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const AgregarProducto = () => {
 
@@ -47,13 +48,22 @@ const AgregarProducto = () => {
                 const response = await fetch(URL, cabecera);
                 console.log(response);
                 if(response.status === 201){
-                    alert("datos enviados");
-                    // Mostrar ventana de Sweet Alert
+                    Swal.fire(
+                        'Producto agregado',
+                        'El producto se cargó correctamente',
+                        'success'
+                      )
+                    // Reseteo form
+                    e.target.reset();
+                    // Redireccionar al componente ListarProductos
                 }
 
             } catch (error){
-                console.log(error);
-                // Mostrar cartel de error al usuario
+                Swal.fire(
+                    'Ocurrió un error',
+                    'Inténtelo nuevamente en unos minutos',
+                    'error'
+                  )
             }
             
             // Espero respuesta

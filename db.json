@@ -35,6 +35,24 @@
       "precioProducto": "100",
       "categoria": "dulce",
       "id": 6
+    },
+    {
+      "nombreProducto": "cortado",
+      "precioProducto": "60",
+      "categoria": "bebida-caliente",
+      "id": 7
+    },
+    {
+      "nombreProducto": "cafe",
+      "precioProducto": "50",
+      "categoria": "bebida-caliente",
+      "id": 8
+    },
+    {
+      "nombreProducto": "cafe",
+      "precioProducto": "50",
+      "categoria": "bebida-caliente",
+      "id": 9
     }
   ]
 }
