@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Inicio from './components/Inicio';
 import ListarProductos from './components/ListarProductos';
 import AgregarProducto from './components/AgregarProducto';
+import EditarProducto from './components/EditarProducto';
 import Navegacion from './components/common/Navegacion';
 import Footer from './components/common/Footer';
 import {useState, useEffect} from 'react';
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path="/productos/nuevo">
             <AgregarProducto consultarAPI={consultarAPI}></AgregarProducto>
+          </Route>
+          <Route exact path="/productos/editar/:id">
+            <EditarProducto></EditarProducto>
           </Route>
         </Switch>
         <Footer></Footer>
