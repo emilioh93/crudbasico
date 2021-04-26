@@ -65,7 +65,7 @@ const ItemProducto = (props) => {
           </span>
         </p>
         <div>
-          <Link className="mr-2 btn btn-warning text-light" to="/productos/editar/{$props.producto.id}">
+          <Link className="mr-2 btn btn-warning text-light" to={`/productos/editar/${props.producto.id}`}>
             <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
           </Link>
           <Button
