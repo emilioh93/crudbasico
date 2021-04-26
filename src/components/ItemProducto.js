@@ -15,10 +15,36 @@ const ItemProducto = (props) => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         // Agregar solicitud deleted
+        try {
+          const URL = process.env.REACT_APP_API_URL + "/" + codigo;
+          const respuesta = await fetch(URL, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
 
+          console.log(respuesta);
+          if(respuesta.status === 200){
+            Swal.fire(
+              "¡Producto eliminado!",
+              "El producto seleccionado fue correctamente eliminado.",
+              "success"
+            );
+            //  Volver a consultar la API
+            props.consultarAPI();  
+          }
+        } catch (error) {
+          console.log(error);
+          Swal.fire(
+            "Ocurrió un error!",
+            "Inténtelo nuevamente más tarde.",
+            "warning"
+          );
+        }
         Swal.fire(
           "¡Producto eliminado!",
           "El producto seleccionado fue correctamente eliminado.",
