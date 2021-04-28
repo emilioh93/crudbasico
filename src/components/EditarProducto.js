@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { campoRequerido, rangoValor } from "./common/helpers";
 
-const EditarProducto = () => {
+const EditarProducto = (props) => {
   const [producto, setProducto] = useState({});
   const URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
+  const nombreProductoRef = useRef("");
+  const precioProductoRef = useRef(0);
+  const [categoria, setCategoria] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-      consultarProducto();
+    consultarProducto();
   }, []);
 
   const consultarProducto = async () => {
     try {
       const respuesta = await fetch(URL + "/" + id);
-      console.log("🚀 ~ file: EditarProducto.js ~ line 16 ~ consultarProducto ~ respuesta", respuesta)
-      if(respuesta.status === 200){
+      console.log(
+        "🚀 ~ file: EditarProducto.js ~ line 16 ~ consultarProducto ~ respuesta",
+        respuesta
+      );
+      if (respuesta.status === 200) {
         const productoEncontrado = await respuesta.json();
         setProducto(productoEncontrado);
       }
-      
     } catch (error) {
       console.log(
         "🚀 ~ file: EditarProducto.js ~ line 16 ~ consultarProducto ~ error",
@@ -31,19 +38,68 @@ const EditarProducto = () => {
   };
 
   const leerCategoria = (e) => {
-    // setCategoria(e.target.value);
+    setCategoria(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Revisar si cambió la categoría, me quedo con el state categoria. Si no  cambió, dejo la categoría como estaba: asignar valor del producto.categoria
+    let _categoria = categoria === "" ? producto.categoria : categoria;
+    console.log(nombreProductoRef.current);
+    console.log(nombreProductoRef.current.value);
+    // Validar datos
+    if (
+      campoRequerido(nombreProductoRef.current.value) &&
+      rangoValor(parseInt(precioProductoRef.current.value)) &&
+      campoRequerido(_categoria)
+    ) {
+      // Ocultar cartel de error
+      setError(false);
+      // Si está bien, envío request a API
+      try {
+        const productoModificado = {
+          nombreProducto: nombreProductoRef.current.value,
+          precioProducto: precioProductoRef.current.value,
+          categoria: _categoria,
+        };
+        // Realizar request
+        const respuesta = await fetch(`${URL}/${producto.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(productoModificado)
+        });
+        if(respuesta.status === 200){
+          Swal.fire(
+            "Producto editado",
+            "El producto fue modificado correctamente",
+            "success"
+          );
+          props.consultarAPI();
+        }
+        console.log("🚀 ~ file: EditarProducto.js ~ line 71 ~ handleSubmit ~ respuesta", respuesta)
+      } catch (error) {
+        console.log(error);
+        // Mostrar cartel al usuario de que algo falló
+        
+      }
+    } else {
+      // Si está mal, pido al usuario que revise los datos
+      setError(true);
+    }
   };
 
   return (
     <div>
       <Container>
-        <Form className="my-5">
+        <Form className="my-5" onSubmit={handleSubmit}>
           <h1 className="my-5 text-center">Editar producto</h1>
           <Form.Group>
             <Form.Label>Nombre del producto*</Form.Label>
             <Form.Control
               type="text"
               placeholder="Café"
+              defaultValue={producto.nombreProducto}
+              ref={nombreProductoRef}
               //   onChange={(e) => setNombreProducto(e.target.value)}s
             ></Form.Control>
           </Form.Group>
@@ -52,6 +108,8 @@ const EditarProducto = () => {
             <Form.Control
               type="number"
               placeholder="50"
+              defaultValue={producto.precioProducto}
+              ref={precioProductoRef}
               //   onChange={(e) => setPrecioProducto(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -64,6 +122,9 @@ const EditarProducto = () => {
               label="Bebida caliente"
               value="bebida-caliente"
               onChange={leerCategoria}
+              defaultChecked={
+                producto.categoria && producto.categoria === "bebida-caliente"
+              }
             ></Form.Check>
             <Form.Check
               inline
@@ -72,6 +133,9 @@ const EditarProducto = () => {
               label="Bebida fría"
               value="bebida-fria"
               onChange={leerCategoria}
+              defaultChecked={
+                producto.categoria && producto.categoria === "bebida-fria"
+              }
             ></Form.Check>
             <Form.Check
               inline
@@ -80,6 +144,9 @@ const EditarProducto = () => {
               label="Dulce"
               value="dulce"
               onChange={leerCategoria}
+              defaultChecked={
+                producto.categoria && producto.categoria === "dulce"
+              }
             ></Form.Check>
             <Form.Check
               inline
@@ -88,16 +155,19 @@ const EditarProducto = () => {
               label="Salado"
               value="salado"
               onChange={leerCategoria}
+              defaultChecked={
+                producto.categoria && producto.categoria === "salado"
+              }
             ></Form.Check>
           </div>
           <Button variant="danger" type="submit" className="w-100">
             Guardar
           </Button>
-          {/* {error === true ? (
+          {error === true ? (
             <Alert variant="danger" className="my-5">
               Faltan cargar datos obligatorios
             </Alert>
-          ) : null} */}
+          ) : null}
         </Form>
       </Container>
     </div>

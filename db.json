@@ -1,31 +1,31 @@
 {
   "cafeteria": [
     {
-      "nombreProducto": "cafe con leche",
+      "nombreProducto": "Cafe con leche",
       "precioProducto": "50",
       "categoria": "bebida-caliente",
       "id": 1
     },
     {
-      "nombreProducto": "submarino",
+      "nombreProducto": "Submarino",
       "precioProducto": "100",
       "categoria": "bebida-caliente",
       "id": 2
     },
     {
-      "nombreProducto": "medialuna x unidad",
+      "nombreProducto": "Medialuna x unidad",
       "precioProducto": "35",
       "categoria": "dulce",
       "id": 3
     },
     {
-      "nombreProducto": "pan x 1kg",
-      "precioProducto": "100",
+      "nombreProducto": "Pan x 1kg",
+      "precioProducto": "80",
       "categoria": "salado",
       "id": 4
     },
     {
-      "nombreProducto": "cafe",
+      "nombreProducto": "Cafe",
       "precioProducto": "50",
       "categoria": "dulce",
       "id": 5
@@ -37,16 +37,22 @@
       "id": 6
     },
     {
-      "nombreProducto": "cortado",
+      "nombreProducto": "Cortado",
       "precioProducto": "60",
       "categoria": "bebida-caliente",
       "id": 7
     },
     {
-      "nombreProducto": "alfajor de maisena",
+      "nombreProducto": "Alfajor de maisena",
       "precioProducto": "70",
       "categoria": "dulce",
       "id": 10
+    },
+    {
+      "nombreProducto": "Agua",
+      "precioProducto": "10",
+      "categoria": "bebida-fria",
+      "id": 11
     }
   ]
 }
