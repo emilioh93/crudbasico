@@ -7,12 +7,6 @@
       "id": 1
     },
     {
-      "nombreProducto": "Submarino",
-      "precioProducto": "100",
-      "categoria": "bebida-caliente",
-      "id": 2
-    },
-    {
       "nombreProducto": "Medialuna x unidad",
       "precioProducto": "35",
       "categoria": "dulce",
@@ -25,9 +19,9 @@
       "id": 4
     },
     {
-      "nombreProducto": "Cafe",
+      "nombreProducto": "Café",
       "precioProducto": "50",
-      "categoria": "dulce",
+      "categoria": "bebida-caliente",
       "id": 5
     },
     {
@@ -53,6 +47,12 @@
       "precioProducto": "10",
       "categoria": "bebida-fria",
       "id": 11
+    },
+    {
+      "nombreProducto": "Café grande",
+      "precioProducto": "200",
+      "categoria": "bebida-caliente",
+      "id": 12
     }
   ]
 }

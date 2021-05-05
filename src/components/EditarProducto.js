@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, withRouter } from "react-router-dom";
 import Swal from "sweetalert2";
 import { campoRequerido, rangoValor } from "./common/helpers";
 
@@ -74,7 +74,10 @@ const EditarProducto = (props) => {
             "El producto fue modificado correctamente",
             "success"
           );
+          // Actualizar datos
           props.consultarAPI();
+          // Quiero redireccionar a otra ruta del sistema de rutas
+          props.history.push("/productos");
         }
         console.log("🚀 ~ file: EditarProducto.js ~ line 71 ~ handleSubmit ~ respuesta", respuesta)
       } catch (error) {
@@ -174,4 +177,4 @@ const EditarProducto = (props) => {
   );
 };
 
-export default EditarProducto;
+export default withRouter(EditarProducto);
