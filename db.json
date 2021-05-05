@@ -13,12 +13,6 @@
       "id": 3
     },
     {
-      "nombreProducto": "Pan x 1kg",
-      "precioProducto": "80",
-      "categoria": "salado",
-      "id": 4
-    },
-    {
       "nombreProducto": "Café",
       "precioProducto": "50",
       "categoria": "bebida-caliente",
