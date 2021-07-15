@@ -47,6 +47,12 @@
       "precioProducto": "200",
       "categoria": "bebida-caliente",
       "id": 12
+    },
+    {
+      "nombreProducto": "Cortado",
+      "precioProducto": "50",
+      "categoria": "bebida-caliente",
+      "id": 13
     }
   ]
 }
