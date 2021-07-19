@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ItemProducto = (props) => {
   const eliminarProducto = (codigo) => {
@@ -29,14 +29,14 @@ const ItemProducto = (props) => {
           });
 
           console.log(respuesta);
-          if(respuesta.status === 200){
+          if (respuesta.status === 200) {
             Swal.fire(
               "¡Producto eliminado!",
               "El producto seleccionado fue correctamente eliminado.",
               "success"
             );
             //  Volver a consultar la API
-            props.consultarAPI();  
+            props.consultarAPI();
           }
         } catch (error) {
           console.log(error);
@@ -65,12 +65,15 @@ const ItemProducto = (props) => {
           </span>
         </p>
         <div>
-          <Link className="mr-2 btn btn-warning text-light" to={`/productos/editar/${props.producto.id}`}>
+          <Link
+            className="mr-2 btn btn-warning text-light"
+            to={`/productos/editar/${props.producto._id}`}
+          >
             <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
           </Link>
           <Button
             variant="danger"
-            onClick={() => eliminarProducto(props.producto.id)}
+            onClick={() => eliminarProducto(props.producto._id)}
           >
             <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
           </Button>

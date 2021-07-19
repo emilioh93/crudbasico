@@ -63,7 +63,7 @@ const EditarProducto = (props) => {
           categoria: _categoria,
         };
         // Realizar request
-        const respuesta = await fetch(`${URL}/${producto.id}`, {
+        const respuesta = await fetch(`${URL}/${producto._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(productoModificado)
