@@ -106,7 +106,7 @@ const AgregarProducto = (props) => {
         <Form.Group>
           <Form.Label>Imagen del producto*</Form.Label>
           <Form.Control
-            type="url"
+            type="text"
             placeholder="Ingrese la URL de la imagen del producto"
             onChange={(e) => setImagenProducto(e.target.value)}
           ></Form.Control>
