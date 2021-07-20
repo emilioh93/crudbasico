@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
-import banner from '../img/coffee.jpg';
+import React, { Fragment } from "react";
+import Portada from "./Portada";
+import Menu from "./Menu";
 
 const Inicio = () => {
-    return (
-        <Fragment>
-            <img src={banner} alt="fondo de la cafetería" className="w-100"/>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+        <Portada></Portada>
+        <Menu></Menu>
+    </Fragment>
+  );
 };
 
 export default Inicio;

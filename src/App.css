@@ -1,0 +1,58 @@
+/* -------------------------------------------------------------------------- */
+
+
+/*                                   Banner                                   */
+
+
+/* -------------------------------------------------------------------------- */
+
+#banner {
+    background-image: url("./img/portada/bannerCafeteria.webp");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+.infoBanner {
+    height: 650px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: 2px 5px 2px black;
+}
+
+.infoBanner h1 {
+    font-size: 5rem;
+}
+
+.infoBanner span {
+    font-size: 2rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/*                                Media queries                               */
+
+
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+    #banner {
+        background-size: contain;
+    }
+    .infoBanner {
+        height: 230px;
+        width: 100%;
+    }
+    .infoBanner h1 {
+        font-size: 3rem;
+    }
+    .infoBanner span {
+        font-size: 1rem;
+    }
+}
