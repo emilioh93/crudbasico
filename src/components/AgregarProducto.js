@@ -81,9 +81,9 @@ const AgregarProducto = (props) => {
   };
 
   return (
-    <Container>
+    <Container className="contenedoresGral">
       <Form className="my-5" onSubmit={handleSubmit}>
-        <h1 className="my-5">Agregar nuevo producto</h1>
+        <h1 className="my-5 text-center">Agregar nuevo producto</h1>
         <Form.Group>
           <Form.Label>Nombre del producto*</Form.Label>
           <Form.Control

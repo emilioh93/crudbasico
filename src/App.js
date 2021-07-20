@@ -5,6 +5,7 @@ import Inicio from './components/Inicio';
 import ListarProductos from './components/ListarProductos';
 import AgregarProducto from './components/AgregarProducto';
 import EditarProducto from './components/EditarProducto';
+import Menu from './components/Menu';
 import Navegacion from './components/common/Navegacion';
 import Footer from './components/common/Footer';
 import {useState, useEffect} from 'react';
@@ -42,7 +43,11 @@ function App() {
         <Navegacion></Navegacion>
         <Switch>
           <Route exact path="/">
-            <Inicio></Inicio>
+            <Inicio ></Inicio>
+            <Menu productos={productos} consultarAPI={consultarAPI}></Menu>
+          </Route>
+          <Route exact path="/menu">
+            <Menu productos={productos} consultarAPI={consultarAPI}></Menu>
           </Route>
           <Route exact path="/productos">
             <ListarProductos productos={productos} consultarAPI={consultarAPI}></ListarProductos>

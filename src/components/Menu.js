@@ -1,24 +1,24 @@
 import React from "react";
-import { Container, Card } from "react-bootstrap";
-import menu1 from "../img/menu/img_1.jpg";
+import { Container } from "react-bootstrap";
+import CardProducto from "./CardProducto";
 
-const Menu = () => {
+const Menu = (props) => {
   return (
-    <Container>
+    <Container className="contenedoresGral">
       <section className="text-center">
-        <h1>Menú</h1>
+        <h2>Menú</h2>
         <span>
           Disfrute de un excelente desayuno o merienda en nuestra Cafetería.
         </span>
       </section>
-      <section className="text-center my-5">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={menu1} />
-          <Card.Body>
-            <Card.Title>Fresh Mushroom</Card.Title>
-            <Card.Footer>$ 150</Card.Footer>
-          </Card.Body>
-        </Card>
+      <section className="text-center my-5 row">
+        {props.productos.map((producto) => (
+          <CardProducto
+            producto={producto}
+            key={producto._id}
+            consultarAPI={props.consultarAPI}
+          ></CardProducto>
+        ))}
       </section>
     </Container>
   );
