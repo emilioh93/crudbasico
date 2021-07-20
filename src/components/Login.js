@@ -29,6 +29,7 @@ const Login = (props) => {
 
   return (
     <Container className="contenedoresGral">
+      <h2 className="text-center">Iniciar sesión</h2>
       <Form className="my-5 contenedorFormLogin">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nombre de Usuario</Form.Label>

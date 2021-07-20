@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 const AgregarProducto = (props) => {
   const [nombreProducto, setNombreProducto] = useState("");
   const [precioProducto, setPrecioProducto] = useState(0);
+  const [imagenProducto, setImagenProducto] = useState("");
   const [categoria, setCategoria] = useState("");
   const [error, setError] = useState(false);
+
+  const history = useHistory();
   // Traer variable de entorno
   const URL = process.env.REACT_APP_API_URL;
-  console.log(
-    "🚀 ~ file: AgregarProducto.js ~ line 12 ~ AgregarProducto ~ URL",
-    URL
-  );
 
   const leerCategoria = (e) => {
     setCategoria(e.target.value);
@@ -24,6 +24,7 @@ const AgregarProducto = (props) => {
     if (
       nombreProducto.trim() !== "" &&
       precioProducto.trim() !== "" &&
+      imagenProducto.trim() !== "" &&
       categoria !== ""
     ) {
       // Si está todo ok, envío los datos del producto a la API
@@ -38,6 +39,7 @@ const AgregarProducto = (props) => {
       const producto = {
         nombreProducto,
         precioProducto,
+        imagenProducto,
         categoria,
       };
       // Envío request POST
@@ -64,6 +66,7 @@ const AgregarProducto = (props) => {
           // Actualizar datos
           props.consultarAPI();
           // Redireccionar al componente ListarProductos
+          history.push("/productos");
         }
       } catch (error) {
         Swal.fire(
@@ -93,11 +96,19 @@ const AgregarProducto = (props) => {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label>Precio*</Form.Label>
+          <Form.Label>Precio del producto*</Form.Label>
           <Form.Control
             type="number"
             placeholder="50"
             onChange={(e) => setPrecioProducto(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Imagen del producto*</Form.Label>
+          <Form.Control
+            type="url"
+            placeholder="Ingrese la URL de la imagen del producto"
+            onChange={(e) => setImagenProducto(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <h3 className="text-center mt-4">Categoría</h3>

@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Logout from "../Logout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Navegacion = (props) => {
   return (
@@ -39,7 +41,7 @@ const Navegacion = (props) => {
                     Contacto
                   </NavLink>
                   <NavLink exact={true} to="/admin" className="nav-link">
-                    Iniciar sesión
+                    <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon>
                   </NavLink>
                 </Fragment>
               )}

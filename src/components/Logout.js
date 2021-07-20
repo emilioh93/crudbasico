@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Logout = (props) => {
   let history = useHistory();
@@ -24,7 +26,7 @@ const Logout = (props) => {
   };
   return (
     <Button type="button" variant="dark" onClick={handleLogout}>
-      Cerrar sesión
+      <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
     </Button>
   );
 };

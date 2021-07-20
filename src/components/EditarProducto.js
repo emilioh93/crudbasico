@@ -10,6 +10,7 @@ const EditarProducto = (props) => {
   const { id } = useParams();
   const nombreProductoRef = useRef("");
   const precioProductoRef = useRef(0);
+  const imagenProductoRef = useRef("");
   const [categoria, setCategoria] = useState("");
   const [error, setError] = useState(false);
 
@@ -20,19 +21,13 @@ const EditarProducto = (props) => {
   const consultarProducto = async () => {
     try {
       const respuesta = await fetch(URL + "/" + id);
-      console.log(
-        "🚀 ~ file: EditarProducto.js ~ line 16 ~ consultarProducto ~ respuesta",
-        respuesta
-      );
+      console.log("Respuesta", respuesta);
       if (respuesta.status === 200) {
         const productoEncontrado = await respuesta.json();
         setProducto(productoEncontrado);
       }
     } catch (error) {
-      console.log(
-        "🚀 ~ file: EditarProducto.js ~ line 16 ~ consultarProducto ~ error",
-        error
-      );
+      console.log("Error", error);
       // Mostrar cartel al usuario
     }
   };
@@ -50,6 +45,7 @@ const EditarProducto = (props) => {
     // Validar datos
     if (
       campoRequerido(nombreProductoRef.current.value) &&
+      campoRequerido(imagenProductoRef.current.value) &&
       rangoValor(parseInt(precioProductoRef.current.value)) &&
       campoRequerido(_categoria)
     ) {
@@ -60,15 +56,16 @@ const EditarProducto = (props) => {
         const productoModificado = {
           nombreProducto: nombreProductoRef.current.value,
           precioProducto: precioProductoRef.current.value,
+          imagenProducto: imagenProductoRef.current.value,
           categoria: _categoria,
         };
         // Realizar request
         const respuesta = await fetch(`${URL}/${producto._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productoModificado)
+          body: JSON.stringify(productoModificado),
         });
-        if(respuesta.status === 200){
+        if (respuesta.status === 200) {
           Swal.fire(
             "Producto editado",
             "El producto fue modificado correctamente",
@@ -79,17 +76,18 @@ const EditarProducto = (props) => {
           // Quiero redireccionar a otra ruta del sistema de rutas
           props.history.push("/productos");
         }
-        console.log("🚀 ~ file: EditarProducto.js ~ line 71 ~ handleSubmit ~ respuesta", respuesta)
+        console.log("Respuesta", respuesta);
       } catch (error) {
         console.log(error);
         // Mostrar cartel al usuario de que algo falló
-        
       }
     } else {
       // Si está mal, pido al usuario que revise los datos
       setError(true);
     }
   };
+
+  console.log("imagenProductoRef", imagenProductoRef);
 
   return (
     <div>
@@ -103,7 +101,6 @@ const EditarProducto = (props) => {
               placeholder="Café"
               defaultValue={producto.nombreProducto}
               ref={nombreProductoRef}
-              //   onChange={(e) => setNombreProducto(e.target.value)}s
             ></Form.Control>
           </Form.Group>
           <Form.Group>
@@ -113,7 +110,15 @@ const EditarProducto = (props) => {
               placeholder="50"
               defaultValue={producto.precioProducto}
               ref={precioProductoRef}
-              //   onChange={(e) => setPrecioProducto(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Imagen del producto*</Form.Label>
+            <Form.Control
+              type="url"
+              placeholder="Ingrese la URL de la imagen del producto"
+              defaultValue={producto.imagenProducto}
+              ref={imagenProductoRef}
             ></Form.Control>
           </Form.Group>
           <h3 className="text-center mt-4">Categoría</h3>
