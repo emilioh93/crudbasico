@@ -4,8 +4,8 @@ const Portada = () => {
   return (
     <div id="banner">
       <div className="infoBanner">
-        <h1>Cafetería</h1>
-        <span>El mejor cafe de todos</span>
+        <h1>Cafe Buda</h1>
+        {/* <span></span> */}
       </div>
     </div>
   );

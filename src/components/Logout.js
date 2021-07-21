@@ -26,7 +26,7 @@ const Logout = (props) => {
   };
   return (
     <Button type="button" variant="dark" onClick={handleLogout}>
-      <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
+      <FontAwesomeIcon icon={faSignOutAlt} className="mr-2"></FontAwesomeIcon>Cerrar sesion
     </Button>
   );
 };

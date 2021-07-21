@@ -91,9 +91,9 @@ const EditarProducto = (props) => {
 
   return (
     <div>
-      <Container>
+      <Container className="contenedoresGral">
         <Form className="my-5" onSubmit={handleSubmit}>
-          <h1 className="my-5 text-center">Editar producto</h1>
+          <h1 className="my-5 text-center titulos">Editar producto</h1>
           <Form.Group>
             <Form.Label>Nombre del producto*</Form.Label>
             <Form.Control
@@ -168,7 +168,7 @@ const EditarProducto = (props) => {
               }
             ></Form.Check>
           </div>
-          <Button variant="danger" type="submit" className="w-100">
+          <Button variant="dark" type="submit" className="w-100 btnSubmit">
             Guardar
           </Button>
           {error === true ? (

@@ -6,12 +6,64 @@
 
 /* -------------------------------------------------------------------------- */
 
+@font-face {
+    font-family: Bernier;
+    src: url('./fonts/BERNIER™\ Shade.ttf')
+}
+
+h1,
+h2,
+.navbar-brand,
+.nav-link,
+.btn {
+    font-family: Bernier;
+}
+
+a,
+.btn {
+    color: #FF9F1C!important;
+}
+
 .contenedoresGral {
     margin-top: 100px;
 }
 
 .sombra {
     box-shadow: 3px 4px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.titulos {
+    text-shadow: 2px 2px 2px grey;
+    color: black;
+}
+
+.btnSubmit {
+    font-size: 25px!important;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/*                                 Navegación                                 */
+
+
+/* -------------------------------------------------------------------------- */
+
+.navbar-brand {
+    font-size: 2rem!important;
+    color: #FF9F1C;
+    text-shadow: 2px 2px 2px grey;
+}
+
+.nav-link {
+    color: black!important;
+    font-size: large;
+    margin: 0 10px;
+}
+
+.nav-link:hover {
+    color: #FF9F1C!important;
 }
 
 
@@ -38,11 +90,13 @@
     align-items: center;
     flex-direction: column;
     color: white;
-    text-shadow: 2px 5px 2px black;
+    text-shadow: 2px 5px 2px white;
 }
 
 .infoBanner h1 {
     font-size: 5rem;
+    -webkit-text-stroke: 2px black;
+    color: transparent;
 }
 
 .infoBanner span {
@@ -100,6 +154,19 @@
     font-size: large;
     background-color: white!important;
     font-weight: bold;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/*                               Lista Productos                              */
+
+
+/* -------------------------------------------------------------------------- */
+
+#btnEditar {
+    background-color: #FF9F1C;
 }
 
 

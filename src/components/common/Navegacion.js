@@ -9,9 +9,9 @@ import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 const Navegacion = (props) => {
   return (
     <div className="">
-      <Navbar bg="danger" expand="lg" variant="dark" className="fixed-top">
+      <Navbar bg="white" expand="lg" variant="white" className="fixed-top">
         <Container>
-          <Navbar.Brand>Cafetería</Navbar.Brand>
+          <Navbar.Brand>Cafe Buda</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
@@ -37,11 +37,11 @@ const Navegacion = (props) => {
                 </Fragment>
               ) : (
                 <Fragment>
-                  <NavLink exact={true} to="/productos" className="nav-link">
+                  <NavLink exact={true} to="/contacto" className="nav-link">
                     Contacto
                   </NavLink>
                   <NavLink exact={true} to="/admin" className="nav-link">
-                    <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faSignInAlt} className="mr-2"></FontAwesomeIcon>Iniciar sesion
                   </NavLink>
                 </Fragment>
               )}

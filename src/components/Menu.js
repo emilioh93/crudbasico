@@ -6,7 +6,7 @@ const Menu = (props) => {
   return (
     <Container className="contenedoresGral">
       <section className="text-center">
-        <h2>Menú</h2>
+        <h1 className="titulos">Menu</h1>
         <span>
           Disfrute de un excelente desayuno o merienda en nuestra Cafetería.
         </span>
