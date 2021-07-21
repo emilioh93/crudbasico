@@ -10,6 +10,10 @@
     margin-top: 100px;
 }
 
+.sombra {
+    box-shadow: 3px 4px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
 
 /* -------------------------------------------------------------------------- */
 
@@ -57,6 +61,45 @@
 .contenedorFormLogin {
     max-width: 30%;
     margin: 0 auto;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/*                                    Card                                    */
+
+
+/* -------------------------------------------------------------------------- */
+
+.cardContenedor {
+    height: 340px;
+    justify-content: space-between;
+}
+
+.cardImg {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.cardNombre {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardPrecio {
+    font-size: large;
+    background-color: white!important;
+    font-weight: bold;
 }
 
 

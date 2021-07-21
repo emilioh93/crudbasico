@@ -29,13 +29,6 @@ const AgregarProducto = (props) => {
     ) {
       // Si está todo ok, envío los datos del producto a la API
       setError(false);
-
-      // Crear objeto
-      // const producto = {
-      //     nombreProducto: nombreProducto,
-      //     precioProducto: precioProducto,
-      //     categoria: categoria
-      // }
       const producto = {
         nombreProducto,
         precioProducto,
@@ -67,6 +60,7 @@ const AgregarProducto = (props) => {
           props.consultarAPI();
           // Redireccionar al componente ListarProductos
           history.push("/productos");
+          console.log("Producto", producto);
         }
       } catch (error) {
         Swal.fire(
