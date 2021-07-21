@@ -56,30 +56,30 @@ const ItemProducto = (props) => {
   };
 
   return (
-    <div>
-      <ListGroup.Item className="d-flex justify-content-between">
-        <p>
-          {props.producto.nombreProducto}{" "}
-          <span className="font-weight-bold">
-            ${props.producto.precioProducto}
-          </span>
-        </p>
-        <div>
-          <Link id="btnEditar"
-            className="mr-2 btn btn-warning text-light"
-            to={`/productos/editar/${props.producto._id}`}
-          >
-            <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
-          </Link>
-          <Button
-            variant="dark"
-            onClick={() => eliminarProducto(props.producto._id)}
-          >
-            <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-          </Button>
-        </div>
-      </ListGroup.Item>
-    </div>
+    <tr>
+      <td>{props.producto._id}</td>
+      <td>{props.producto.nombreProducto}</td>
+      <td>${props.producto.precioProducto}</td>
+      <td>{props.producto.categoria}</td>
+      <td id="tablaImg">
+        <img src={props.producto.imagenProducto} alt="imagen de producto" />
+      </td>
+      <td>
+        <Link
+          id="btnEditar"
+          className="mr-2 btn btn-warning text-light"
+          to={`/productos/editar/${props.producto._id}`}
+        >
+          <FontAwesomeIcon icon={faPencilAlt}></FontAwesomeIcon>
+        </Link>
+        <Button
+          variant="dark"
+          onClick={() => eliminarProducto(props.producto._id)}
+        >
+          <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+        </Button>
+      </td>
+    </tr>
   );
 };
 

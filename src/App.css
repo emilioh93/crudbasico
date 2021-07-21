@@ -169,6 +169,16 @@ a,
     background-color: #FF9F1C;
 }
 
+th {
+    max-width: 200px;
+    min-width: 50px;
+    width: 200px;
+}
+
+#tablaImg img {
+    width: 25%;
+}
+
 
 /* -------------------------------------------------------------------------- */
 
