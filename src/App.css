@@ -6,6 +6,12 @@
 
 /* -------------------------------------------------------------------------- */
 
+:root {
+    --main-color: white;
+    --secondary-color: #ebb576;
+    --third-color: black;
+}
+
 @font-face {
     font-family: Bernier;
     src: url('./fonts/BERNIER™\ Shade.ttf')
@@ -21,7 +27,7 @@ h2,
 
 a,
 .btn {
-    color: #FF9F1C!important;
+    color: var(--secondary-color)!important;
 }
 
 .contenedoresGral {
@@ -34,7 +40,7 @@ a,
 
 .titulos {
     text-shadow: 2px 2px 2px grey;
-    color: black;
+    color: var(--third-color);
 }
 
 .btnSubmit {
@@ -50,20 +56,24 @@ a,
 
 /* -------------------------------------------------------------------------- */
 
+.navbar-toggler-icon {
+    color: var(--third-color);
+}
+
 .navbar-brand {
     font-size: 2rem!important;
-    color: #FF9F1C;
+    color: var(--secondary-color);
     text-shadow: 2px 2px 2px grey;
 }
 
 .nav-link {
-    color: black!important;
+    color: var(--third-color)!important;
     font-size: large;
     margin: 0 10px;
 }
 
 .nav-link:hover {
-    color: #FF9F1C!important;
+    color: var(--secondary-color)!important;
 }
 
 
@@ -89,13 +99,13 @@ a,
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white;
-    text-shadow: 2px 5px 2px white;
+    color: var(--main-color);
+    text-shadow: 2px 5px 2px var(--main-color);
 }
 
 .infoBanner h1 {
     font-size: 5rem;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 2px var(--third-color);
     color: transparent;
 }
 
@@ -129,6 +139,7 @@ a,
 .cardContenedor {
     height: 340px;
     justify-content: space-between;
+    border: 2px solid var(--secondary-color)!important;
 }
 
 .cardImg {
@@ -152,7 +163,7 @@ a,
 
 .cardPrecio {
     font-size: large;
-    background-color: white!important;
+    background-color: var(--main-color)!important;
     font-weight: bold;
 }
 
@@ -166,7 +177,7 @@ a,
 /* -------------------------------------------------------------------------- */
 
 #btnEditar {
-    background-color: #FF9F1C;
+    background-color: var(--secondary-color);
 }
 
 th {
@@ -191,18 +202,18 @@ th {
 @media (max-width: 767.98px) {
     /* --------------------------------- General -------------------------------- */
     .contenedoresGral {
-        margin-top: 60px;
+        margin-top: 100px;
     }
     /* --------------------------------- Portada -------------------------------- */
     #banner {
-        background-size: contain;
+        background-size: cover;
     }
     .infoBanner {
         height: 315px;
         width: 100%;
     }
     .infoBanner h1 {
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .infoBanner span {
         font-size: 1rem;

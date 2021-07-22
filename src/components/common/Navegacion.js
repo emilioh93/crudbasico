@@ -41,7 +41,11 @@ const Navegacion = (props) => {
                     Contacto
                   </NavLink>
                   <NavLink exact={true} to="/admin" className="nav-link">
-                    <FontAwesomeIcon icon={faSignInAlt} className="mr-2"></FontAwesomeIcon>Iniciar sesion
+                    <FontAwesomeIcon
+                      icon={faSignInAlt}
+                      className="mr-2"
+                    ></FontAwesomeIcon>
+                    Iniciar sesion
                   </NavLink>
                 </Fragment>
               )}
