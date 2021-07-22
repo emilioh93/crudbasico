@@ -56,9 +56,8 @@ a,
 
 /* -------------------------------------------------------------------------- */
 
-.navbar-toggler {
-    color: var(--third-color)!important;
-    background-color: var(--third-color)!important;
+.navbar-toggler-icon {
+    color: var(--third-color);
 }
 
 .navbar-brand {

@@ -14,10 +14,6 @@ const AgregarProducto = (props) => {
   // Traer variable de entorno
   const URL = process.env.REACT_APP_API_URL;
 
-  if (props.usuario == null) {
-    history.push("/login");
-  }
-
   const leerCategoria = (e) => {
     setCategoria(e.target.value);
   };

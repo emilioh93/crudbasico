@@ -7,13 +7,21 @@ import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../firebaseconfig";
 
-const Navegacion = (props) => {
+const Navegacion = () => {
   let history = useHistory();
+
+  const [usuario, setUsuario] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUsuario(user.email);
+      }
+    });
+  }, []);
 
   const CerrarSesion = () => {
     auth.signOut();
-    props.setUsuario(null);
-    console.log("🚀 ~ file: Navegacion.js ~ line 16 ~ CerrarSesion ~  props.Usuario",  props.usuario)
+    setUsuario(null);
     history.push("/");
   };
   return (
@@ -30,7 +38,7 @@ const Navegacion = (props) => {
               <NavLink exact={true} to="/menu" className="nav-link">
                 Menu
               </NavLink>
-              {props.usuario ? (
+              {usuario ? (
                 <Fragment>
                   <NavLink exact={true} to="/productos" className="nav-link">
                     Lista de productos
@@ -55,7 +63,7 @@ const Navegacion = (props) => {
                   <NavLink exact={true} to="/contacto" className="nav-link">
                     Contacto
                   </NavLink>
-                  <NavLink exact={true} to="/login" className="nav-link">
+                  <NavLink exact={true} to="/admin" className="nav-link">
                     <FontAwesomeIcon
                       icon={faSignInAlt}
                       className="mr-2"
