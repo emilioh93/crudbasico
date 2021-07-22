@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
-import { useParams, withRouter } from "react-router-dom";
+import { useParams, withRouter, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { campoRequerido, rangoValor } from "./common/helpers";
 
@@ -13,6 +13,11 @@ const EditarProducto = (props) => {
   const imagenProductoRef = useRef("");
   const [categoria, setCategoria] = useState("");
   const [error, setError] = useState(false);
+  let history = useHistory();
+
+  if (props.usuario == null) {
+    history.push("/login");
+  }
 
   useEffect(() => {
     consultarProducto();

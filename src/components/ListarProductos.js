@@ -1,8 +1,19 @@
-import React from "react";
-import { ListGroup, Container, Table } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container, Table } from "react-bootstrap";
 import ItemProducto from "./ItemProducto";
+import { useHistory } from "react-router-dom";
 
 const ListarProductos = (props) => {
+  let history = useHistory();
+
+  useEffect(() => {
+    if (props.usuario == null) {
+      history.push("/login");
+    }
+  }, []);
+
+  console.log("Usuario", props.usuario);
+
   return (
     <Container className="contenedoresGral">
       <h1 className="text-center my-5 titulos">Productos</h1>
@@ -18,24 +29,15 @@ const ListarProductos = (props) => {
           </tr>
         </thead>
         <tbody>
-        {props.productos.map((producto) => (
-          <ItemProducto
-            producto={producto}
-            key={producto._id}
-            consultarAPI={props.consultarAPI}
-          ></ItemProducto>
-        ))}
+          {props.productos.map((producto) => (
+            <ItemProducto
+              producto={producto}
+              key={producto._id}
+              consultarAPI={props.consultarAPI}
+            ></ItemProducto>
+          ))}
         </tbody>
       </Table>
-      {/* <ListGroup className="my-5">
-        {props.productos.map((producto) => (
-          <ItemProducto
-            producto={producto}
-            key={producto._id}
-            consultarAPI={props.consultarAPI}
-          ></ItemProducto>
-        ))}
-      </ListGroup> */}
     </Container>
   );
 };

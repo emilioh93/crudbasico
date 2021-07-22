@@ -11,14 +11,23 @@ import Footer from "./components/common/Footer";
 import { useState, useEffect } from "react";
 import Error404 from "./components/common/Error404";
 import Login from "./components/Login";
+import { auth } from "../src/firebaseconfig";
 
 function App() {
   const URL = process.env.REACT_APP_API_URL;
   const [productos, setProductos] = useState([]);
+  const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
     // Llamar a la API
     consultarAPI();
+    // Autentificar usuario
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUsuario(user.email);
+      }
+    });
+    console.log("Usuario", usuario);
   }, []);
 
   const consultarAPI = async () => {
@@ -38,7 +47,7 @@ function App() {
 
   return (
     <Router>
-      <Navegacion></Navegacion>
+      <Navegacion usuario={usuario} setUsuario={setUsuario}></Navegacion>
       <Switch>
         <Route exact path="/">
           <Inicio></Inicio>
@@ -47,20 +56,28 @@ function App() {
         <Route exact path="/menu">
           <Menu productos={productos} consultarAPI={consultarAPI}></Menu>
         </Route>
-        <Route exact path="/admin">
+        <Route exact path="/login">
           <Login></Login>
         </Route>
         <Route exact path="/productos">
           <ListarProductos
             productos={productos}
             consultarAPI={consultarAPI}
+            usuario={usuario}
+            setUsuario={setUsuario}
           ></ListarProductos>
         </Route>
         <Route exact path="/productos/nuevo">
-          <AgregarProducto consultarAPI={consultarAPI}></AgregarProducto>
+          <AgregarProducto
+            consultarAPI={consultarAPI}
+            usuario={usuario}
+          ></AgregarProducto>
         </Route>
         <Route exact path="/productos/editar/:id">
-          <EditarProducto consultarAPI={consultarAPI}></EditarProducto>
+          <EditarProducto
+            consultarAPI={consultarAPI}
+            usuario={usuario}
+          ></EditarProducto>
         </Route>
         <Route path="*">
           <Error404></Error404>
