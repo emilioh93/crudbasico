@@ -24,12 +24,36 @@ const Login = () => {
         history.push("/productos");
       })
       .catch((error) => {
-        console.log("🚀 ~ file: Login.js ~ line 27 ~ RegistrarUsuario ~ error", error)
+        console.log("Error", error);
         if (error.code == "auth/invalid-email") {
           setMsjError("Formato de email incorrecto");
         }
         if (error.code == "auth/weak-password") {
           setMsjError("La contraseña debe tener por lo menos 6 caracteres");
+        }
+      });
+  };
+
+  const IniciarSesion = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, pass)
+      .then((respuesta) => {
+        console.log("Respuesta", respuesta);
+        Swal.fire(
+          "Inicio de sesion correcto",
+          "Redirigiendo a página de administrador...",
+          "success"
+        );
+        history.push("/productos");
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        if (error.code == "auth/wrong-password") {
+          setMsjError("Contraseña incorrecta");
+        }
+        if (error.code == "auth/user-not-found") {
+          setMsjError("Email incorrecto");
         }
       });
   };
@@ -65,7 +89,7 @@ const Login = () => {
           variant="dark"
           type="submit"
           className="w-100"
-          // onClick={handleSubmit}
+          onClick={IniciarSesion}
         >
           Ingresar
         </Button>

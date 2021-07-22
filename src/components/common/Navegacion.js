@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import Logout from "../Logout";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { NavLink, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { auth } from "../../firebaseconfig";
 
-const Navegacion = (props) => {
+const Navegacion = () => {
+  let history = useHistory();
+
+  const [usuario, setUsuario] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUsuario(user.email);
+      }
+    });
+  }, []);
+
+  const CerrarSesion = () => {
+    auth.signOut();
+    setUsuario(null);
+    history.push("/");
+  };
   return (
     <div className="">
       <Navbar bg="white" expand="lg" variant="white" className="fixed-top">
@@ -21,7 +38,7 @@ const Navegacion = (props) => {
               <NavLink exact={true} to="/menu" className="nav-link">
                 Menu
               </NavLink>
-              {props.login ? (
+              {usuario ? (
                 <Fragment>
                   <NavLink exact={true} to="/productos" className="nav-link">
                     Lista de productos
@@ -33,7 +50,13 @@ const Navegacion = (props) => {
                   >
                     Agregar productos
                   </NavLink>
-                  <Logout setLogin={props.setLogin}></Logout>
+                  <Button variant="dark" onClick={CerrarSesion}>
+                    <FontAwesomeIcon
+                      icon={faSignOutAlt}
+                      className="mr-2"
+                    ></FontAwesomeIcon>
+                    Cerrar sesion
+                  </Button>
                 </Fragment>
               ) : (
                 <Fragment>
