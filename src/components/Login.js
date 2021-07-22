@@ -25,10 +25,10 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("Error", error);
-        if (error.code == "auth/invalid-email") {
+        if (error.code === "auth/invalid-email") {
           setMsjError("Formato de email incorrecto");
         }
-        if (error.code == "auth/weak-password") {
+        if (error.code === "auth/weak-password") {
           setMsjError("La contraseña debe tener por lo menos 6 caracteres");
         }
       });
@@ -49,10 +49,10 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("Error", error);
-        if (error.code == "auth/wrong-password") {
+        if (error.code === "auth/wrong-password") {
           setMsjError("Contraseña incorrecta");
         }
-        if (error.code == "auth/user-not-found") {
+        if (error.code === "auth/user-not-found") {
           setMsjError("Email incorrecto");
         }
       });

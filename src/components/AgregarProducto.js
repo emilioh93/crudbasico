@@ -60,7 +60,6 @@ const AgregarProducto = (props) => {
           props.consultarAPI();
           // Redireccionar al componente ListarProductos
           history.push("/productos");
-          console.log("Producto", producto);
         }
       } catch (error) {
         Swal.fire(

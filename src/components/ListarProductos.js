@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Container, Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import ItemProducto from "./ItemProducto";
 
 const ListarProductos = (props) => {
