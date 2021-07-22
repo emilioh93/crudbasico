@@ -15,9 +15,6 @@ import Login from "./components/Login";
 function App() {
   const URL = process.env.REACT_APP_API_URL;
   const [productos, setProductos] = useState([]);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     // Llamar a la API
@@ -41,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <Navegacion login={login} setLogin={setLogin}></Navegacion>
+      <Navegacion></Navegacion>
       <Switch>
         <Route exact path="/">
           <Inicio></Inicio>
@@ -51,14 +48,7 @@ function App() {
           <Menu productos={productos} consultarAPI={consultarAPI}></Menu>
         </Route>
         <Route exact path="/admin">
-          <Login
-            username={username}
-            setUsername={setUsername}
-            password={password}
-            setPassword={setPassword}
-            login={login}
-            setLogin={setLogin}
-          ></Login>
+          <Login></Login>
         </Route>
         <Route exact path="/productos">
           <ListarProductos

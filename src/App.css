@@ -127,6 +127,14 @@ a,
     margin: 0 auto;
 }
 
+#btnRegistro {
+    border-color: var(--third-color);
+}
+
+#btnRegistro:hover {
+    background-color: var(--third-color);
+}
+
 
 /* -------------------------------------------------------------------------- */
 
