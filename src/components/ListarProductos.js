@@ -9,8 +9,8 @@ const ListarProductos = (props) => {
       <Table className="text-center">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Nombre</th>
+            <th>Descripción</th>
             <th>Precio</th>
             <th>Categoria</th>
             <th>Imagen</th>
@@ -18,24 +18,15 @@ const ListarProductos = (props) => {
           </tr>
         </thead>
         <tbody>
-        {props.productos.map((producto) => (
-          <ItemProducto
-            producto={producto}
-            key={producto._id}
-            consultarAPI={props.consultarAPI}
-          ></ItemProducto>
-        ))}
+          {props.productos.map((producto) => (
+            <ItemProducto
+              producto={producto}
+              key={producto._id}
+              consultarAPI={props.consultarAPI}
+            ></ItemProducto>
+          ))}
         </tbody>
       </Table>
-      {/* <ListGroup className="my-5">
-        {props.productos.map((producto) => (
-          <ItemProducto
-            producto={producto}
-            key={producto._id}
-            consultarAPI={props.consultarAPI}
-          ></ItemProducto>
-        ))}
-      </ListGroup> */}
     </Container>
   );
 };

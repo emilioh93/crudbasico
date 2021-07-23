@@ -57,8 +57,8 @@ const ItemProducto = (props) => {
 
   return (
     <tr>
-      <td>{props.producto._id}</td>
       <td>{props.producto.nombreProducto}</td>
+      <td>{props.producto._id}</td>
       <td>${props.producto.precioProducto}</td>
       <td>{props.producto.categoria}</td>
       <td id="tablaImg">

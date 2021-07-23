@@ -47,6 +47,13 @@ a,
     font-size: 25px!important;
 }
 
+body {
+    background-image: url(./img/fondo/buda.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 
 /* -------------------------------------------------------------------------- */
 
@@ -55,10 +62,6 @@ a,
 
 
 /* -------------------------------------------------------------------------- */
-
-.navbar-toggler-icon {
-    color: var(--third-color);
-}
 
 .navbar-brand {
     font-size: 2rem!important;
@@ -196,6 +199,19 @@ th {
 
 #tablaImg img {
     width: 25%;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/*                              Agregar Productos                             */
+
+
+/* -------------------------------------------------------------------------- */
+
+#vistaPrevia {
+    width: 100%;
 }
 
 

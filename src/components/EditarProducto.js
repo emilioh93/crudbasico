@@ -13,6 +13,7 @@ const EditarProducto = (props) => {
   const imagenProductoRef = useRef("");
   const [categoria, setCategoria] = useState("");
   const [error, setError] = useState(false);
+  const [vistaPrevia, setVistaPrevia] = useState("");
 
   useEffect(() => {
     consultarProducto();
@@ -87,8 +88,6 @@ const EditarProducto = (props) => {
     }
   };
 
-  console.log("imagenProductoRef", imagenProductoRef);
-
   return (
     <div>
       <Container className="contenedoresGral">
@@ -112,15 +111,27 @@ const EditarProducto = (props) => {
               ref={precioProductoRef}
             ></Form.Control>
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Imagen del producto*</Form.Label>
-            <Form.Control
-              type="url"
-              placeholder="Ingrese la URL de la imagen del producto"
-              defaultValue={producto.imagenProducto}
-              ref={imagenProductoRef}
-            ></Form.Control>
-          </Form.Group>
+          <div className="row">
+            <div className="col-md-8 col-sm-12">
+              <Form.Group>
+                <Form.Label>Imagen del producto*</Form.Label>
+                <Form.Control
+                  type="url"
+                  placeholder="Ingrese la URL de la imagen del producto"
+                  defaultValue={producto.imagenProducto}
+                  ref={imagenProductoRef}
+                  onChange={(e) => setVistaPrevia(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </div>
+            <div className="col-md-4 col-sm-12">
+              <img
+                id="vistaPrevia"
+                src={vistaPrevia}
+                alt="Imagen del producto"
+              />
+            </div>
+          </div>
           <h3 className="text-center mt-4">Categoría</h3>
           <div className="text-center my-4">
             <Form.Check

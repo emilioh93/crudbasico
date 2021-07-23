@@ -5,6 +5,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { auth } from "../../firebaseconfig";
 
 const Navegacion = () => {
@@ -30,6 +31,7 @@ const Navegacion = () => {
         <Container>
           <Navbar.Brand>Cafe Buda</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <FontAwesomeIcon icon={faBars}></FontAwesomeIcon> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <NavLink exact={true} to="/" className="nav-link">
