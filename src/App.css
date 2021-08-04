@@ -191,6 +191,12 @@ body {
     background-color: var(--secondary-color);
 }
 
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 th {
     max-width: 200px;
     min-width: 50px;

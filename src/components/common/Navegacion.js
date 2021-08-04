@@ -30,8 +30,9 @@ const Navegacion = () => {
       <Navbar bg="white" expand="lg" variant="white" className="fixed-top">
         <Container>
           <Navbar.Brand>Cafe Buda</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            {/* <FontAwesomeIcon icon={faBars}></FontAwesomeIcon> */}
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+          </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <NavLink exact={true} to="/" className="nav-link">
