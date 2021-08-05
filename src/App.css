@@ -189,6 +189,7 @@ body {
 
 #btnEditar {
     background-color: var(--secondary-color);
+    color: white;
 }
 
 table {
