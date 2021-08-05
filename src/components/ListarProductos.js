@@ -10,7 +10,7 @@ const ListarProductos = (props) => {
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Descripción</th>
+            {/* <th>Descripción</th> */}
             <th>Precio</th>
             <th>Categoria</th>
             <th>Imagen</th>

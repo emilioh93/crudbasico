@@ -253,4 +253,8 @@ th {
         max-width: 70%;
         margin: 0 auto;
     }
+    /* ---------------------------- Listar Productos ---------------------------- */
+    #tablaImg img {
+        width: 80%;
+    }
 }
